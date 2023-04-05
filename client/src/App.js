@@ -1,27 +1,23 @@
-import React, {Fragment} from "react";
-import {BrowserRouter, Route} from "react-router-dom";
 
-
+import React from "react";
+import AppNavbar from "./components/Common/AppNavbar";
+import {Route, Routes} from "react-router";
 import ReadPage from "./pages/ReadPage";
 import CreatePage from "./pages/CreatePage";
-import Updatepage from "./pages/Updatepage";
+import UpdatePage from "./pages/UpdatePage";
 
 
-function App() {
-  return (
-    <div className="App">
-      <Fragment>
-          <BrowserRouter>
-              <Switch>
-                  <Route exact path = "/" component ={ReadPage}/>
-                  <Route exact path = "/create" component ={CreatePage}/>
-                  <Route exact path = "/update" component ={Updatepage}/>
-              </Switch>
-          </BrowserRouter>
-      </Fragment>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div>
+            <AppNavbar/>
+            <Routes>
+                <Route path = "/" element ={<ReadPage/>}/>
+                <Route path = "/create" element ={<CreatePage/>}/>
+                <Route path = "/update" element ={<UpdatePage/>}/>
+            </Routes>
+        </div>
+    );
+};
 
 export default App;
-
