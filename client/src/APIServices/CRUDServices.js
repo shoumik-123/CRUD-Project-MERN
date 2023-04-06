@@ -42,7 +42,7 @@ export function Read() {
 
 
 
-export function Update(id) {
+export function Update(id,ProductName,ProductCode,Img,UnitPrice,Quantity,TotalPrice) {
     let URL="/api/v1/UpdateProduct/"+id;
     let PostBody={
         ProductName:ProductName,
