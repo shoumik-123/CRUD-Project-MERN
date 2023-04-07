@@ -47,6 +47,13 @@ const CreateForm = () => {
               if(Result===true){
                   const msg = "Data save "
                 SuccessToast(msg)
+
+                  PName.value="";
+                  PCode.value="";
+                  Image.value="";
+                  UPrice.value="";
+                  Qty.value="";
+                  TPrice.value="";
               }else {
                 toast("Request Failed. Try again")
               }
