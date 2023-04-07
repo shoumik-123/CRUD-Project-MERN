@@ -47,7 +47,6 @@ const CreateForm = () => {
               if(Result===true){
                   const msg = "Data save "
                 SuccessToast(msg)
-                  toast("Thanks")
               }else {
                 toast("Request Failed. Try again")
               }
