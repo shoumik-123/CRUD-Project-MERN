@@ -3,12 +3,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {ErrorToast, isEmpty, SuccessToast} from "../../helper/ValidationHelper";
 import {Create} from "../../APIServices/CRUDServices";
+import FullScreenLoader from "../Common/FullScreenLoader";
 
 const CreateForm = () => {
 
 
 
-    let PName,PCode,Image,UPrice,Qty,TPrice = useRef();
+    let PName,PCode,Image,UPrice,Qty,TPrice,Loader = useRef();
 
     const SaveData = () => {
       let ProductName= PName.value;
@@ -43,7 +44,16 @@ const CreateForm = () => {
           ErrorToast(msg);
       }
       else {
+
+          // Loader
+          Loader.classList.remove("d-none")
+
           Create(ProductName , ProductCode ,Img ,UnitPrice,Quantity,TotalPrice).then((Result)=>{
+
+              //Loader
+              Loader.classList.add("d-none")
+
+
               if(Result===true){
                   const msg = "Data save "
                 SuccessToast(msg)
@@ -66,6 +76,7 @@ const CreateForm = () => {
     return (
         <div>
             <div className="container">
+
                 <div className="row py-5">
                     <div className="col-md-4 pt-5">
                         <label>Product Name</label>
@@ -99,6 +110,10 @@ const CreateForm = () => {
                     </div>
                     <ToastContainer />
                 </div>
+
+            </div>
+            <div className="d-none" ref={(div)=>Loader=div}>
+                <FullScreenLoader/>
             </div>
         </div>
     );
