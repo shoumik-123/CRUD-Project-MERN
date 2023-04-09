@@ -1,10 +1,12 @@
 import React from 'react';
-import Spinner from 'react-bootstrap/Spinner';
+import Loading from 'react-fullscreen-loading';
 
-const FullScreenLoader = () => {
-    return <Spinner size="lg" animation="grow" />;
-};
+class FullScreenLoader extends React.Component {
+    render() {
+        return(
+            <Loading loading background="#f2f3f7" loaderColor="#02030a" />
+        )
+    }
+}
 
 export default FullScreenLoader;
-
-

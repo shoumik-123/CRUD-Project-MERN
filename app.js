@@ -55,12 +55,12 @@ mongoose.connect(URI,OPTION).then(() => {
 
 
 
-//Managing front end routing
-app.use(express.static('client/build'))
-app.get("*", function (req, res) {
-    // req.sendFile(path.resolve(__dirname,'client','build','index.html'))
-    res.sendFile(path.resolve(__dirname,'client/build/index.html'))
-})
+// //Managing front end routing
+// app.use(express.static('client/build'))
+// app.get("*", function (req, res) {
+//     // req.sendFile(path.resolve(__dirname,'client','build','index.html'))
+//     res.sendFile(path.resolve(__dirname,'client/build/index.html'))
+// })
 
 
 //Routing Implement
