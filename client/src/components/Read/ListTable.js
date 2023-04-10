@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Read} from "../../APIServices/CRUDServices";
+import {Delete, Read, Update} from "../../APIServices/CRUDServices";
 import FullScreenLoader from "../Common/FullScreenLoader";
+import {toast} from "react-toastify";
+import {SuccessToast} from "../../helper/ValidationHelper";
+// import { withRouter } from "react-router";
+
 
 const ListTable = () => {
 
@@ -12,6 +16,25 @@ const ListTable = () => {
         })
     }, []);
 
+
+    const DeleteItem = (_id) => {
+        Delete(_id).then((Result)=>{
+            if(Result===200){
+                const msg = "Delete "
+                SuccessToast(msg)
+                // props.history.push("/");
+                window.location.reload(false)
+            }
+            else {
+                toast("Delete Fail")
+            }
+        })
+    };
+
+
+    const UpdateItem = (_id) => {
+        Update(_id)
+    };
 
     if(DataList.length>0){
         return (
@@ -37,8 +60,8 @@ const ListTable = () => {
                                     <td>{item.UnitPrice}</td>
                                     <td>{item.Quantity}</td>
                                     <td>{item.TotalPrice}</td>
-                                    <td><button className="btn btn-dark">Update</button></td>
-                                    <td><button className="btn btn-danger">Delete</button></td>
+                                    <td><button onClick={UpdateItem.bind(this, item._id)} className="btn btn-dark">Update</button></td>
+                                    <td><button onClick={DeleteItem.bind(this , item._id)} className="btn btn-danger">Delete</button></td>
                                 </tr>
                             )
                         })

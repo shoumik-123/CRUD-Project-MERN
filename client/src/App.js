@@ -12,7 +12,8 @@ const App = () => {
         <div>
             <AppNavbar/>
             <Routes>
-                <Route path = "/" element ={<ReadPage/>}/>
+                <Route path = "/" element={<ReadPage />}/>
+                {/*<Route path = "/" render={(props)=><ReadPage {...props} key={ Date.now()} />}/>*/}
                 <Route path = "/create" element ={<CreatePage/>}/>
                 <Route path = "/update" element ={<UpdatePage/>}/>
             </Routes>
