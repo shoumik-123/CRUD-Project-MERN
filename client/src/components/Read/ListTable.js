@@ -33,10 +33,12 @@ const ListTable = () => {
                                 <tr>
                                     <td>{item.ProductName}</td>
                                     <td>{item.ProductCode}</td>
-                                    <td><img className="w-50 h-auto" src={item.Img}/></td>
+                                    <td><img className="w-25 h-25" src={item.Img}/></td>
                                     <td>{item.UnitPrice}</td>
                                     <td>{item.Quantity}</td>
                                     <td>{item.TotalPrice}</td>
+                                    <td><button className="btn btn-dark">Update</button></td>
+                                    <td><button className="btn btn-danger">Delete</button></td>
                                 </tr>
                             )
                         })

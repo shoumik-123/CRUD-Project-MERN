@@ -22,7 +22,6 @@ const AppNavbar = () => {
                         >
                             <Nav.Link><NavLink to="/">List</NavLink></Nav.Link>
                             <Nav.Link><NavLink to="/create">Create</NavLink></Nav.Link>
-                            <Nav.Link><NavLink to="/update">Update</NavLink></Nav.Link>
 
 
                         </Nav>
