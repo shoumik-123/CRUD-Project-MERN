@@ -23,7 +23,8 @@ const ListTable = () => {
                 const msg = "Delete "
                 SuccessToast(msg)
                 // props.history.push("/");
-                window.location.reload(false)
+                window.location.reload();
+
             }
             else {
                 toast("Delete Fail")
@@ -41,12 +42,14 @@ const ListTable = () => {
             <div className="container my-5">
                 <table className="table table-bordered">
                     <thead>
-                    <th className="p-4">Product Name</th>
-                    <th className="p-4">Product Code</th>
-                    <th className="p-4">Image</th>
-                    <th className="p-4">Unit Price</th>
-                    <th className="p-4">Quantity</th>
-                    <th className="p-4">Total Price</th>
+                    <th className="p-3">No</th>
+                    <th className="p-3">Product Name</th>
+                    <th className="p-3">Product Code</th>
+                    <th className="p-3">Image</th>
+                    <th className="p-3">Unit Price</th>
+                    <th className="p-3">Quantity</th>
+                    <th className="p-3">Total Price</th>
+                    <th className="p-3">Action</th>
                     </thead>
 
                     <tbody>
@@ -54,14 +57,14 @@ const ListTable = () => {
                         DataList.map((item, i )=>{
                             return (
                                 <tr>
-                                    <td>{item.ProductName}</td>
-                                    <td>{item.ProductCode}</td>
-                                    <td><img className="w-25 h-25" src={item.Img}/></td>
-                                    <td>{item.UnitPrice}</td>
-                                    <td>{item.Quantity}</td>
-                                    <td>{item.TotalPrice}</td>
-                                    <td><button onClick={UpdateItem.bind(this, item._id)} className="btn btn-dark">Update</button></td>
-                                    <td><button onClick={DeleteItem.bind(this , item._id)} className="btn btn-danger">Delete</button></td>
+                                    <td className="p-3">{i + 1}</td>
+                                    <td className="p-3">{item.ProductName}</td>
+                                    <td className="p-3">{item.ProductCode}</td>
+                                    <td className="p-3"><img className="w-25 h-25" src={item.Img}/></td>
+                                    <td className="p-3">{item.UnitPrice}</td>
+                                    <td className="p-3">{item.Quantity}</td>
+                                    <td className="p-3">{item.TotalPrice}</td>
+                                    <td className="p-3"><button onClick={UpdateItem.bind(this, item._id)} className="btn btn-dark mx-3">Update</button><button onClick={DeleteItem.bind(this , item._id)} className="btn btn-danger mx-3">Delete</button></td>
                                 </tr>
                             )
                         })
