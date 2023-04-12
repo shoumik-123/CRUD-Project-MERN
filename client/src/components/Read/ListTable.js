@@ -3,7 +3,6 @@ import {Delete, Read, Update} from "../../APIServices/CRUDServices";
 import FullScreenLoader from "../Common/FullScreenLoader";
 import {toast} from "react-toastify";
 import {SuccessToast} from "../../helper/ValidationHelper";
-// import { withRouter } from "react-router";
 
 
 const ListTable = () => {
@@ -14,16 +13,14 @@ const ListTable = () => {
         Read().then((Result)=>{
             SetDataList(Result)
         })
-    }, []);
+    }, [DataList]);
 
 
     const DeleteItem = (_id) => {
-        Delete(_id).then((Result)=>{
-            if(Result===200){
+        Delete(_id).then((result)=>{
+            if(result){
                 const msg = "Delete "
                 SuccessToast(msg)
-                // props.history.push("/");
-                window.location.reload();
 
             }
             else {
@@ -42,35 +39,42 @@ const ListTable = () => {
             <div className="container my-5">
                 <table className="table table-bordered">
                     <thead>
-                    <th className="p-3">No</th>
-                    <th className="p-3">Product Name</th>
-                    <th className="p-3">Product Code</th>
-                    <th className="p-3">Image</th>
-                    <th className="p-3">Unit Price</th>
-                    <th className="p-3">Quantity</th>
-                    <th className="p-3">Total Price</th>
-                    <th className="p-3">Action</th>
+                    <tr>
+                        <th className="p-3">No</th>
+                        <th className="p-3">Product Name</th>
+                        <th className="p-3">Product Code</th>
+                        <th className="p-3">Image</th>
+                        <th className="p-3">Unit Price</th>
+                        <th className="p-3">Quantity</th>
+                        <th className="p-3">Total Price</th>
+                        <th className="p-3">Update</th>
+                        <th className="p-3">Delete</th>
+                    </tr>
                     </thead>
 
                     <tbody>
-                    {
-                        DataList.map((item, i )=>{
-                            return (
-                                <tr>
-                                    <td className="p-3">{i + 1}</td>
-                                    <td className="p-3">{item.ProductName}</td>
-                                    <td className="p-3">{item.ProductCode}</td>
-                                    <td className="p-3"><img className="w-25 h-25" src={item.Img}/></td>
-                                    <td className="p-3">{item.UnitPrice}</td>
-                                    <td className="p-3">{item.Quantity}</td>
-                                    <td className="p-3">{item.TotalPrice}</td>
-                                    <td className="p-3"><button onClick={UpdateItem.bind(this, item._id)} className="btn btn-dark mx-3">Update</button><button onClick={DeleteItem.bind(this , item._id)} className="btn btn-danger mx-3">Delete</button></td>
-                                </tr>
-                            )
-                        })
-                    }
+                    {DataList.map((item, i )=>{
+                        return (
+                            <tr key={item._id}>
+                                <td className="p-3">{i + 1}</td>
+                                <td className="p-3">{item.ProductName}</td>
+                                <td className="p-3">{item.ProductCode}</td>
+                                <td className="p-3"><img className="w-25 h-25 img-fluid" src={item.Img}/></td>
+                                <td className="p-3">{item.UnitPrice}</td>
+                                <td className="p-3">{item.Quantity}</td>
+                                <td className="p-3">{item.TotalPrice}</td>
+                                <td className="py-2">
+                                    <button onClick={UpdateItem.bind(this, item._id)} className="btn btn-dark mx-2">Update</button>
+                                </td>
+                                <td className="py-2">
+                                    <button onClick={DeleteItem.bind(this, item._id)} className="btn btn-danger mx-2">Delete</button>
+                                </td>
+                            </tr>
+                        )
+                    })}
                     </tbody>
                 </table>
+
             </div>
         );
     }
