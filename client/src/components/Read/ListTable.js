@@ -3,11 +3,16 @@ import {Delete, Read, Update} from "../../APIServices/CRUDServices";
 import FullScreenLoader from "../Common/FullScreenLoader";
 import {toast} from "react-toastify";
 import {SuccessToast} from "../../helper/ValidationHelper";
+import {useNavigate} from "react-router";
 
 
-const ListTable = (props) => {
+
+const ListTable = () => {
 
     let [DataList, SetDataList]= useState([])
+
+    const navigate = useNavigate()
+
 
     useEffect(()=>{
         Read().then((Result)=>{
@@ -21,7 +26,7 @@ const ListTable = (props) => {
             if(result===true){
                 const msg = "Delete "
                 SuccessToast(msg);
-                props.history.push("/")
+                navigate('/')
             }
             else {
                 toast("Delete Fail");
@@ -31,7 +36,7 @@ const ListTable = (props) => {
 
 
     const UpdateItem = (_id) => {
-        props.history.push("/update/"+_id)
+        navigate('/update/'+_id)
     };
 
     if(DataList.length>0){
