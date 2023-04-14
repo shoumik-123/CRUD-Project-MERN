@@ -4,13 +4,12 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import {NavLink} from "react-router-dom";
 
 
 const AppNavbar = () => {
     return (
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="light " expand="lg">
                 <Container fluid>
                     <Navbar.Brand href="#home">CRUD</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -20,10 +19,8 @@ const AppNavbar = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link><NavLink to="/">List</NavLink></Nav.Link>
-                            <Nav.Link><NavLink to="/create">Create</NavLink></Nav.Link>
-
-
+                            <Nav.Link><NavLink className="text-dark text-decoration-none " to="/">List</NavLink></Nav.Link>
+                            <Nav.Link><NavLink className="text-dark text-decoration-none " to="/create">Create</NavLink></Nav.Link>
                         </Nav>
                         <Form className="d-flex">
                             <Form.Control
