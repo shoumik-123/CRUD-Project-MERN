@@ -20,10 +20,7 @@ exports.CreateProduct =(req,res)=>{
 
 
 exports.ReadProduct =(req,res)=>{
-
-    let Query ={}
-    let Projection = "ProductName ProductCode Img UnitPrice Quantity TotalPrice CreateDate"
-    ProductsModel.find(Query,Projection)
+    ProductsModel.find()
         .then((data)=>{
             res.status(200).json({status: "Success", data: data})
         })
@@ -35,8 +32,7 @@ exports.ReadProductByID =(req,res)=>{
 
     let id =req.params.id;
     let Query = {_id:id}
-    let Projection = "ProductName ProductCode Img UnitPrice Quantity TotalPrice CreateDate"
-    ProductsModel.find(Query,Projection)
+    ProductsModel.find(Query)
         .then((data)=>{
             res.status(200).json({status: "Success", data: data})
         })

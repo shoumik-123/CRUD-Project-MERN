@@ -9,6 +9,7 @@ import {useNavigate} from "react-router";
 const CreateForm = () => {
 
 
+    const navigate = useNavigate()
 
 
 
@@ -62,12 +63,7 @@ const CreateForm = () => {
                   const msg = "Data save "
                 SuccessToast(msg)
 
-                  PName.value="";
-                  PCode.value="";
-                  Image.value="";
-                  UPrice.value="";
-                  Qty.value="";
-                  TPrice.value="";
+                  navigate('/')
 
               }else {
                 toast("Request Failed. Try again")
