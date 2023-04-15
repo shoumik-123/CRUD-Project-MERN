@@ -23,10 +23,11 @@ const ListTable = () => {
 
     const DeleteItem = (_id) => {
         Delete(_id).then((result)=>{
+            navigate('/')
             if(result===true){
                 const msg = "Delete "
                 SuccessToast(msg);
-                navigate('/')
+
             }
             else {
                 toast("Delete Fail");

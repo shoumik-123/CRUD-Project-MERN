@@ -39,6 +39,21 @@ export function Read() {
     })
 }
 
+export function ReadByID(id) {
+    let URL="http://localhost:5005/api/v1/ReadProductByID/" +id;
+
+    return axios.get(URL).then((res)=>{
+        if(res.status===200){
+            return res.data['data']
+        }else {
+            return false
+        }
+    }).catch((err)=>{
+        console.log(err)
+        return false;
+    })
+}
+
 
 
 

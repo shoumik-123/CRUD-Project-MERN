@@ -4,14 +4,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import {ErrorToast, isEmpty, SuccessToast} from "../../helper/ValidationHelper";
 import {Create} from "../../APIServices/CRUDServices";
 import FullScreenLoader from "../Common/FullScreenLoader";
+import {useNavigate} from "react-router";
 
 const CreateForm = () => {
 
 
 
+
+
     let PName,PCode,Image,UPrice,Qty,TPrice,Loader = useRef();
 
-    const SaveData = () => {
+    const SaveData = ()=>{
+
       let ProductName= PName.value;
       let ProductCode= PCode.value;
       let Img= Image.value;
@@ -64,6 +68,7 @@ const CreateForm = () => {
                   UPrice.value="";
                   Qty.value="";
                   TPrice.value="";
+
               }else {
                 toast("Request Failed. Try again")
               }
@@ -77,7 +82,8 @@ const CreateForm = () => {
         <div>
             <div className="container">
 
-                <div className="row py-5">
+                <h1 className="bg-dark p-3 text-center text-secondary">Create Data List</h1>
+                <div className="py-5 row">
                     <div className="col-md-4 pt-5">
                         <label>Product Name</label>
                         <input ref={(input)=>PName= input} type="text" className="form-control"/>

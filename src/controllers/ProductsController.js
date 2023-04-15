@@ -31,6 +31,19 @@ exports.ReadProduct =(req,res)=>{
             res.status(400).json({status: "Fail", data: err})
         });
 }
+exports.ReadProductByID =(req,res)=>{
+
+    let id =req.params.id;
+    let Query = {_id:id}
+    let Projection = "ProductName ProductCode Img UnitPrice Quantity TotalPrice CreateDate"
+    ProductsModel.find(Query,Projection)
+        .then((data)=>{
+            res.status(200).json({status: "Success", data: data})
+        })
+        .catch((err)=>{
+            res.status(400).json({status: "Fail", data: err})
+        });
+}
 
 
 
